@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         AddNewObject action = new AddNewObject();
+
         Product[] listProduct = new Product[5];
         Product p1 = new Product(1, "Iphone15", 2999, 12, "ios 16");
         Product p2 = new Product(2, "Iphone14", 1999, 52, "ios 15");
@@ -35,19 +36,42 @@ public class Main {
             } else {
                 switch (input) {
                     case 1:
-                        Product productNew=action.addProduct(scanner);
-                        Product[] listProductNew = new Product[listProduct.length+1];
+                        Product productNew = action.addProduct(scanner);
+                        Product[] listProductNew = new Product[listProduct.length + 1];
                         for (int i = 0; i < listProduct.length; i++) {
                             listProductNew[i] = listProduct[i];
                         }
-                        listProductNew[listProductNew.length-1] = productNew;
-                        listProduct=listProductNew;
+                        listProductNew[listProductNew.length - 1] = productNew;
+                        listProduct = listProductNew;
                         action.display(listProduct);
                         break;
                     case 2:
-
+                        System.out.println("Nhập vào id cần thay đổi");
+                        int idFix = scanner.nextInt();
+                        for (int i = 0; i < listProduct.length; i++) {
+                            if (idFix == listProduct[i].getId()){
+                                System.out.println("Sua id: " );
+                                scanner.nextLine();
+                                listProduct[i].setId(scanner.nextInt());
+                                System.out.println("Sua name: ");
+                                scanner.nextLine();
+                                listProduct[i].setName(scanner.nextLine());
+                                System.out.println("sua price: ");
+                                listProduct[i].setPrice(scanner.nextFloat());
+                                scanner.nextLine();
+                                System.out.println("Sua so luong: ");
+                                listProduct[i].setQuantity(scanner.nextInt());
+                                scanner.nextLine();
+                                System.out.println("Sua mo ta: ");
+                                listProduct[i].setDescription(scanner.nextLine());
+                                break;
+                            }
+                        }
+                        action.display(listProduct);
                         break;
                     case 3:
+                        System.out.println("Nhap vao ID can xoa: ");
+                        int del = scanner.nextInt();
                     case 4:
                     case 5:
                     case 6:
